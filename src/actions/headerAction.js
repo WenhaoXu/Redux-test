@@ -1,3 +1,6 @@
 
 
-export  default  addItem =()=>({type: 'AddItem'})
+export  default  addItem =(value)=>({type: 'AddItem',value})
+export  default  generateUUID=()=>({
+    type : 'getUUID'
+})
