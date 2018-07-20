@@ -23,7 +23,7 @@ export default class  header extends Component{
 
 
     render(){
-        const {addItem,} =this.props;
+        const {addItem} =this.props;
         return(
             <div>
                 <input id="input-text" className="input-text" type="text" name="ListItem"  ref={this.inputText}/>

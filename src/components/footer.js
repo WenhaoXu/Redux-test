@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../../Redux-todo-list/redux-app/src/todo.css'
+
 
 
 export default class footer extends Component{
@@ -18,27 +18,27 @@ export default class footer extends Component{
     //
     // }
 
-    // render() {
-    //
-    //     return (
-    //         <div>
-    //             <ul id="filters">
-    //                 <li>
-    //                     <a href="#" data-filter="all" className={this.state.status == " all" ? " selected" : ""}
-    //                        onClick={this.showTodoList}>All</a>
-    //                 </li>
-    //                 <li>
-    //                     <a href="#" data-filter="active" className={this.state.status== " active" ? "selected" : ""}
-    //                        onClick={this.showTodoList}>Active</a>
-    //                 </li>
-    //                 <li>
-    //                     <a href="#" data-filter="complete" className={this.state.status == " complete" ? "selected" : ""}
-    //                        onClick={this.showTodoList}>Complete</a>
-    //                 </li>
-    //             </ul>
-    //         </div>
-    //
-    //     )
-    // }
+    render() {
+             const{ showTodoList,  status} =this.props
+        return (
+            <div>
+                <ul id="filters">
+                    <li>
+                        <a href="#" data-filter="all" className={status == " all" ? " selected" : ""}
+                           onClick={()=>showTodoList("all")}>All</a>
+                    </li>
+                    <li>
+                        <a href="#" data-filter="active" className={status== " active" ? "selected" : ""}
+                           onClick={()=>showTodoList("active")}>Active</a>
+                    </li>
+                    <li>
+                        <a href="#" data-filter="complete" className={status == " complete" ? "selected" : ""}
+                           onClick={()=>showTodoList("complete")}>Complete</a>
+                    </li>
+                </ul>
+            </div>
+
+        )
+    }
 
 }

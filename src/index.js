@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import App from './App'
-import counter from './reducers/index'
+import counter from './reducers/headerReducer'
+
 import {Provider} from "react-redux"
 import './todo.css';
 

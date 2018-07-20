@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './todo.css';
-import Header from './containers/headerContainer'
+import Header from './containers/headerContainer';
+import Items from './containers/ListItemContainer';
+import  Footer from'./containers/footerContainer';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +20,8 @@ class App extends Component {
                 </p>
             </div>
             <Header/>
+            <Items/>
+            <Footer/>
             {/*func={this.generateUUID} addfunc={this.addItems}*/}
             {/*Header 的属性type={this.state.todoList}*/}
             {/*{this.filterByStatus(this.state.todoList, this.state.statusOfList).map((x) => <Item key={x.id} id={x.id} name={x.name} value={x.value}  comple={x.complete}  changeName={(id,content)=>this.changeName(id,content)}  />)}*/}
