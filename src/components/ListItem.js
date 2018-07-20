@@ -8,6 +8,18 @@ export default class ListItem extends Component {
 
     }
 
+    componentDidMount(){
+        document.addEventListener("keydown",this.handleEnterKey);
+    }
+    componentWillUmount(){
+        document.removeEventListener("keydown",this.handleEenterKey);
+    }
+    handleEnterKey = (e) => {
+        if(e.keyCode === 13){
+            e.target.contentEditable="false";
+        }
+    }
+
     render() {
         const {todo, editItem, checkItem} = this.props;
         return (

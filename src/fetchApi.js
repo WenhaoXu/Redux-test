@@ -5,9 +5,10 @@ const stateDate = {
 
 
 const fetchaddItems = (value) => {
-    let uuid = generateUUID();
-    stateDate.todoList.push({id: uuid, name: "", value: value, contentEditable: false, display: "block"})
-
+    if (value != "") {
+        let uuid = generateUUID();
+        stateDate.todoList.push({id: uuid, name: "", value: value, contentEditable: false, display: "block"})
+    }
     return fetchshowItems(stateDate.statusOfList)
 }
 
