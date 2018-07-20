@@ -1,21 +1,23 @@
 import {connect} from 'react-redux';
 import {showTodoList} from "../actions/footerAction"
 import footer from "../components/footer";
+import {fetchshowItems} from '../fetchApi'
 
-const mapStateToProps=(state,ownProps)=>{
+const mapStateToProps = (state, ownProps) => {
     return {
-         status: state.statusOfList,
+        status: state.statusOfList,
     }
 }
 
 
-const mapDispatchToProps=(dispatch,ownProps)=>{
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        showTodoList:(status) => dispatch(showTodoList(status)),
-        // generateUUID:() => dispatch(generateUUID()),
-        // onMul:(index, multipler) => dispatch(mulTo(index,multipler)),
-        // onDaly:(index)=>dispatch(dalyTo(index))
+        showTodoList: (status) => {
+            const data = fetchshowItems(status);
+            dispatch(showTodoList(status, data))
+        }
+
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(footer)
+export default connect(mapStateToProps, mapDispatchToProps)(footer)

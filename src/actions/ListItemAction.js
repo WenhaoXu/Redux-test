@@ -1,8 +1,8 @@
-export  const  checkItem =(id)=>(
+export  const  checkItem =(data)=>(
     {
-        type : "checkItem", id
+        type : "checkItem", data
     }
 )
 
 
-export const  editItem=(id)=>({type:"editItem",id})
+export const  editItem=(data)=>({type:"editItem",data})

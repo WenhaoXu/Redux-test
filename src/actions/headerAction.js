@@ -1,3 +1,3 @@
 
 
-export  const  addItem =(value)=>({type: 'AddItem',value})
+export  const  addItem =(data)=>({type: 'AddItem',data})

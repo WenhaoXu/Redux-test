@@ -1,4 +1,4 @@
 
-export  const  showTodoList=(status)=>({
-    type:'showTodoList',status
+export  const  showTodoList=(status,data)=>({
+    type:'showTodoList',status,data
 })
