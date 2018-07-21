@@ -1,8 +1,24 @@
+import React from 'react';
+
+import axios from 'axios';
+
+
+
 const stateDate = {
     todoList: [{id: "145151", name: "", value: "fafa", contentEditable: false, display: "block"}],
     statusOfList: "all"
 }
 
+
+const componentDidMount=()=> {
+    let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
+
+    axios.get(URL)
+        .then(res => {
+            console.log(res.data);
+
+        });
+}
 
 const fetchaddItems = (value) => {
     if (value != "") {
@@ -11,6 +27,7 @@ const fetchaddItems = (value) => {
     }
     return fetchshowItems(stateDate.statusOfList)
 }
+
 
 const fetchchnageItems = (id) => {
     let name = stateDate.todoList.find(item => item.id === id).name;

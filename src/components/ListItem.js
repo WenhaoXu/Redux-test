@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from "axios/index";
 
 
 export default class ListItem extends Component {
@@ -10,6 +11,18 @@ export default class ListItem extends Component {
 
     componentDidMount(){
         document.addEventListener("keydown",this.handleEnterKey);
+
+        //
+        let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
+        axios.get(URL)
+            .then(res => {
+                console.log(res.data);
+                const data=res.data
+                const formatt = this.props.formatt;
+                formatt(data);
+            });
+        // const formatt=this.props.formatt;
+        // formatt;
     }
     componentWillUmount(){
         document.removeEventListener("keydown",this.handleEenterKey);
@@ -21,7 +34,7 @@ export default class ListItem extends Component {
     }
 
     render() {
-        const {todo, editItem, checkItem} = this.props;
+        const {todo, editItem, checkItem,format} = this.props;
         return (
             <ol>
                 {todo.map(x => <li id={x.id} className={x.name} onDoubleClick={() => editItem(x.id)}>

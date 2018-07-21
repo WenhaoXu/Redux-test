@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {checkItem, editItem} from "../actions/ListItemAction"
+import {checkItem, editItem,format} from "../actions/ListItemAction"
 import ListItem from "../components/ListItem";
 import {fetchchnageItems, fetchchnageContent} from '../fetchApi'
 
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch, props) => {
             dispatch(editItem(data))
         },
 
+        formatt:(data)=>{
+            dispatch(format(data))
+        }
     }
 }
 

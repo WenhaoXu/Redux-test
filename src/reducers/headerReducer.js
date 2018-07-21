@@ -1,5 +1,17 @@
+
+
+
 export default (state = {todoList: [], statusOfList: 'all'}, action) => {
     switch (action.type) {
+
+        case "format":{
+            return {
+
+                todoList: action.data.todolist,
+                statusOfList: action.data.statusOfList
+            }
+        }
+
 
         case "AddItem": {
 
