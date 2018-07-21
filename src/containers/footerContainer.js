@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {showTodoList} from "../actions/footerAction"
+
 import footer from "../components/footer";
 import {fetchshowItems,getDataFromMock} from '../fetchApi'
 
@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         showTodoList: (status) => {
-            const data = fetchshowItems(status);
-            dispatch(showTodoList(status, data))
+            const data = fetchshowItems(status,dispatch);
+            // dispatch(showTodoList(status, data))
         }
 
     }

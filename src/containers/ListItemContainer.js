@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import {format} from "../actions/ListItemAction"
 import ListItem from "../components/ListItem";
-import {fetchchnageItems, fetchchnageContent,postContent} from '../fetchApi'
+import {fetchchnageItems, fetchchnageContent,postContent,maplist} from '../fetchApi'
 
 const mapStateToProps = (state, props) => {
     return {
-        todo: state.todoList.filter(x => x.display === "block")
+        todo: maplist(state.todoList,state.statusOfList)
     }
 
 }

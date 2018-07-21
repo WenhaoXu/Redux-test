@@ -3,12 +3,13 @@ import React from 'react';
 import axios from 'axios';
 import {addItem} from "./actions/headerAction"
 import {checkItem, editItem,format} from "./actions/ListItemAction"
+import {showTodoList} from "./actions/footerAction"
 let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
 
-const stateDate = {
-    todoList: [{id: "145151", name: "", value: "fafa", contentEditable: false, display: "block"}],
-    statusOfList: "all"
-}
+// const stateDate = {
+//     todoList: [{id: "145151", name: "", value: "fafa", contentEditable: false, display: "block"}],
+//     statusOfList: "all"
+// }
 
 
 
@@ -26,8 +27,6 @@ const fetchaddItems = (value,dispatch) => {
 
 
 }
-
-
 const fetchchnageItems = (id,dispatch) => {
     let array=[];
     let newname="";
@@ -37,9 +36,9 @@ const fetchchnageItems = (id,dispatch) => {
         let newItem= array.find(item=>item.id===id)
         newItem.name===""?newname="checked":newname
         array.find(item=>item.id===id).name=newname
-            axios.put(URL,newItem).then(
+            axios.put(URL,newItem)
                 dispatch(checkItem(array))
-            )
+
         }
     )
 }
@@ -67,39 +66,34 @@ const postContent=(value,id,dispatch)=>{
         item.value=value;
         URL=URL+'/'+id;
         array.find(item => item.id === id).value=value;
-        axios.put(URL,item).then();
+        axios.put(URL,item)
         dispatch(editItem(array))
     })
 }
 
-const fetchshowItems = (status) => {
-    stateDate.todoList.map(x => {
-        if (status === "all") {
-            x.display = "block";
-            return x;
-        }
-        if (status === "active") {
-            if (x.name === "checked") {
-                x.display = "none"
-            }
-            else {
-                x.display = "block"
-            }
-        }
-        if (status === "complete") {
-            if (x.name === "") {
-                x.display = "none"
-            }
-            else {
-                x.display = "block"
-            }
-        }
-
+const fetchshowItems = (status,dispatch) => {
+    let array=[];
+    axios.get(URL).then(res=>{
+        array=[...res.data]
+        array=maplist(array,status)
+        dispatch(showTodoList(status,array))
     })
-    stateDate.statusOfList = status;
-
-    return stateDate
-
 }
 
-export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,postContent}
+const maplist=(array,status)=>{
+
+   array.filter(x => {
+        if (status === "all") {
+            return true;
+        }
+        if (status === "active") {
+          return    x.name === ""
+        }
+        if (status === "complete") {
+         return  x.name === "checked"
+        }
+    })
+   return array.size===0?array=[]:array
+}
+
+export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,postContent,maplist}
