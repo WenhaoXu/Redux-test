@@ -1,8 +1,9 @@
 import {connect} from 'react-redux';
-import {addItem} from "../actions/headerAction"
 import inputItem from "../components/header";
 import {fetchaddItems} from '../fetchApi'
 
+
+let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
 const mapStateToProps=(state,ownProps)=>{
     return {
 
@@ -13,10 +14,8 @@ const mapStateToProps=(state,ownProps)=>{
 const mapDispatchToProps=(dispatch,ownProps)=>{
     return {
         addItem:(value) =>
-
         {
-           const data=fetchaddItems(value)
-            dispatch(addItem(data))
+           fetchaddItems(value, dispatch)
         }
     }
 }

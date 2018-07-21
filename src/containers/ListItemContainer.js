@@ -12,14 +12,14 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         checkItem: (id) => {
-            const data = fetchchnageItems(id)
-            dispatch(checkItem(data))
+         fetchchnageItems(id,dispatch)
+            // dispatch(checkItem(data))
         },
 
 
         editItem: (id) => {
-            const data = fetchchnageContent(id)
-            dispatch(editItem(data))
+            fetchchnageContent(id,dispatch)
+            // dispatch(editItem(data))
         },
 
         formatt:(data)=>{

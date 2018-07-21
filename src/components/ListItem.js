@@ -11,18 +11,13 @@ export default class ListItem extends Component {
 
     componentDidMount(){
         document.addEventListener("keydown",this.handleEnterKey);
-
-        //
         let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
         axios.get(URL)
             .then(res => {
-                console.log(res.data);
                 const data=res.data
                 const formatt = this.props.formatt;
                 formatt(data);
             });
-        // const formatt=this.props.formatt;
-        // formatt;
     }
     componentWillUmount(){
         document.removeEventListener("keydown",this.handleEenterKey);

@@ -1,8 +1,9 @@
 import React from 'react';
 
 import axios from 'axios';
-
-
+import {addItem} from "./actions/headerAction"
+import {checkItem, editItem,format} from "./actions/ListItemAction"
+let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
 
 const stateDate = {
     todoList: [{id: "145151", name: "", value: "fafa", contentEditable: false, display: "block"}],
@@ -10,32 +11,47 @@ const stateDate = {
 }
 
 
-const getDataFromMock=()=> {
-    let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
 
-    axios.post(URL,{id: 12243143, name: "", value: "assafff", contentEditable: false, display: "block"})
-        .then(res => {
-            const data=res.data
-            console.log("asasf")
+const fetchaddItems = (value,dispatch) => {
+    let array=[];
+        axios.get(URL).then(res => {
+          array= [...res.data]
+            if(value!=""){
+            axios.post(URL,{id: 12243143, name: "", value: value, contentEditable: false, display: "block"})
+                .then(res => {
+                    array.push(res.data)
+                    dispatch(addItem(array))
+                });}
+        })
 
-        });
-}
 
-const fetchaddItems = (value) => {
-    if (value != "") {
-        let uuid = generateUUID();
-        getDataFromMock()
-        stateDate.todoList.push({id: uuid, name: "", value: value, contentEditable: false, display: "block"})
-    }
-    return fetchshowItems(stateDate.statusOfList)
 }
 
 
-const fetchchnageItems = (id) => {
-    let name = stateDate.todoList.find(item => item.id === id).name;
-    name === "" ? name = "checked" : name = ""
-    stateDate.todoList.find(item => item.id === id).name = name;
-    return fetchshowItems(stateDate.statusOfList)
+const fetchchnageItems = (id,dispatch) => {
+    let array=[];
+    let newname="";
+    axios.get(URL).then(res=>{
+        array=[...res.data]
+        URL=URL+'/'+id;
+        let newItem= array.find(item=>item.id===id)
+        newItem.name===""?newname="checked":newname
+        array.find(item=>item.id===id).name=newname
+            axios.put(URL,newItem).then(
+                dispatch(checkItem(array))
+            )
+        }
+    )
+
+
+
+
+
+
+    // let name = stateDate.todoList.find(item => item.id === id).name;
+    // name === "" ? name = "checked" : name = ""
+    // stateDate.todoList.find(item => item.id === id).name = name;
+    // return fetchshowItems(stateDate.statusOfList)
 
 }
 
@@ -99,4 +115,4 @@ var generateUUID = () => {
     return uuid;
 }
 
-export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,getDataFromMock}
+export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems}
