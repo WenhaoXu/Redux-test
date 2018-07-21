@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import {checkItem, editItem,format} from "../actions/ListItemAction"
+import {format} from "../actions/ListItemAction"
 import ListItem from "../components/ListItem";
-import {fetchchnageItems, fetchchnageContent} from '../fetchApi'
+import {fetchchnageItems, fetchchnageContent,postContent} from '../fetchApi'
 
 const mapStateToProps = (state, props) => {
     return {
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch, props) => {
             // dispatch(editItem(data))
         },
 
+        post:(value,id)=>{
+           postContent (value,id,dispatch)
+        },
         formatt:(data)=>{
             dispatch(format(data))
         }

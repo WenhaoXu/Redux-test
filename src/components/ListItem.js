@@ -25,11 +25,13 @@ export default class ListItem extends Component {
     handleEnterKey = (e) => {
         if(e.keyCode === 13){
             e.target.contentEditable="false";
+            const post = this.props.post;
+            post(e.target.value,e.target.id);
         }
     }
 
     render() {
-        const {todo, editItem, checkItem,format} = this.props;
+        const {todo, editItem, checkItem,format,post} = this.props;
         return (
             <ol>
                 {todo.map(x => <li id={x.id} className={x.name} onDoubleClick={() => editItem(x.id)}>

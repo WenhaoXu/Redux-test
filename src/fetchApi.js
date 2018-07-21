@@ -42,26 +42,34 @@ const fetchchnageItems = (id,dispatch) => {
             )
         }
     )
-
-
-
-
-
-
-    // let name = stateDate.todoList.find(item => item.id === id).name;
-    // name === "" ? name = "checked" : name = ""
-    // stateDate.todoList.find(item => item.id === id).name = name;
-    // return fetchshowItems(stateDate.statusOfList)
-
 }
 
 
-const fetchchnageContent = (id) => {
-    let contentEditable = stateDate.todoList.find(item => item.id === id).contentEditable;
-    contentEditable ? contentEditable = false : contentEditable = true;
-    stateDate.todoList.find(item => item.id === id).contentEditable = contentEditable;
+const fetchchnageContent = (id,dispatch) => {
+    let array=[];
+    axios.get(URL).then(res=>{
+            array=[...res.data]
+       array.find(item => item.id === id).contentEditable=true;
+        // contentEditable ? contentEditable = false : contentEditable = true;
+        dispatch(editItem(array))
+    })
+    //
+    // stateDate.todoList.find(item => item.id === id).contentEditable = contentEditable;
+    //
+    // return fetchshowItems(stateDate.statusOfList)
+}
 
-    return fetchshowItems(stateDate.statusOfList)
+const postContent=(value,id,dispatch)=>{
+    let array=[];
+    axios.get(URL).then(res=>{
+        array=[...res.data]
+      let item=  array.find(item => item.id === id);
+        item.value=value;
+        URL=URL+'/'+id;
+        array.find(item => item.id === id).value=value;
+        axios.put(URL,item).then();
+        dispatch(editItem(array))
+    })
 }
 
 const fetchshowItems = (status) => {
@@ -94,25 +102,4 @@ const fetchshowItems = (status) => {
 
 }
 
-
-var generateUUID = () => {
-    /*jshint bitwise:false */
-    var i,
-        random;
-    var uuid = '';
-
-    for (i = 0; i < 32; i++) {
-        random = Math.random() * 16 | 0;
-        if (i === 8 || i === 12 || i === 16 || i === 20) {
-            uuid += '-';
-        }
-        uuid += (i === 12
-            ? 4
-            : (i === 16
-                ? (random & 3 | 8)
-                : random)).toString(16);
-    }
-    return uuid;
-}
-
-export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems}
+export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,postContent}
