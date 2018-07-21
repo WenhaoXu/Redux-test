@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {showTodoList} from "../actions/footerAction"
 import footer from "../components/footer";
-import {fetchshowItems} from '../fetchApi'
+import {fetchshowItems,getDataFromMock} from '../fetchApi'
 
 const mapStateToProps = (state, ownProps) => {
     return {

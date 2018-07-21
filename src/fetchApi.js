@@ -10,12 +10,13 @@ const stateDate = {
 }
 
 
-const componentDidMount=()=> {
+const getDataFromMock=()=> {
     let URL="https://5b5193a16ecd1b0014aa3519.mockapi.io/Api/StateDate";
 
-    axios.get(URL)
+    axios.post(URL,{id: 12243143, name: "", value: "assafff", contentEditable: false, display: "block"})
         .then(res => {
-            console.log(res.data);
+            const data=res.data
+            console.log("asasf")
 
         });
 }
@@ -23,6 +24,7 @@ const componentDidMount=()=> {
 const fetchaddItems = (value) => {
     if (value != "") {
         let uuid = generateUUID();
+        getDataFromMock()
         stateDate.todoList.push({id: uuid, name: "", value: value, contentEditable: false, display: "block"})
     }
     return fetchshowItems(stateDate.statusOfList)
@@ -97,4 +99,4 @@ var generateUUID = () => {
     return uuid;
 }
 
-export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems}
+export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,getDataFromMock}

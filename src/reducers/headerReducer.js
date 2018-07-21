@@ -7,8 +7,8 @@ export default (state = {todoList: [], statusOfList: 'all'}, action) => {
         case "format":{
             return {
 
-                todoList: action.data.todolist,
-                statusOfList: action.data.statusOfList
+                todoList: action.data,
+                statusOfList: state.statusOfList
             }
         }
 
@@ -17,8 +17,8 @@ export default (state = {todoList: [], statusOfList: 'all'}, action) => {
 
             return {
 
-                todoList: action.data.todoList,
-                statusOfList: action.data.statusOfList
+                todoList: action.data,
+                statusOfList: state.statusOfList
             }
         }
 
@@ -27,8 +27,8 @@ export default (state = {todoList: [], statusOfList: 'all'}, action) => {
 
             return {
 
-                todoList: action.data.todoList,
-                statusOfList: action.data.statusOfList
+                todoList: action.data,
+                statusOfList: state.statusOfList
             }
         }
 
@@ -36,16 +36,16 @@ export default (state = {todoList: [], statusOfList: 'all'}, action) => {
 
             return {
 
-                todoList: action.data.todoList,
-                statusOfList: action.data.statusOfList
+                todoList: action.data,
+                statusOfList: state.statusOfList
             }
         }
 
         case "showTodoList": {
 
             return {
-                todoList: action.data.todoList,
-                statusOfList: action.data.statusOfList
+                todoList: action.data,
+                statusOfList: action.status
             }
         }
 

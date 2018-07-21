@@ -18,10 +18,6 @@ const mapDispatchToProps=(dispatch,ownProps)=>{
            const data=fetchaddItems(value)
             dispatch(addItem(data))
         }
-
-        // generateUUID:() => dispatch(generateUUID()),
-        // onMul:(index, multipler) => dispatch(mulTo(index,multipler)),
-        // onDaly:(index)=>dispatch(dalyTo(index))
     }
 }
 
