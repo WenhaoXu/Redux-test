@@ -49,13 +49,8 @@ const fetchchnageContent = (id,dispatch) => {
     axios.get(URL).then(res=>{
             array=[...res.data]
        array.find(item => item.id === id).contentEditable=true;
-        // contentEditable ? contentEditable = false : contentEditable = true;
         dispatch(editItem(array))
     })
-    //
-    // stateDate.todoList.find(item => item.id === id).contentEditable = contentEditable;
-    //
-    // return fetchshowItems(stateDate.statusOfList)
 }
 
 const postContent=(value,id,dispatch)=>{
@@ -82,7 +77,7 @@ const fetchshowItems = (status,dispatch) => {
 
 const maplist=(array,status)=>{
 
-   array.filter(x => {
+ return  array.filter(x => {
         if (status === "all") {
             return true;
         }
@@ -93,7 +88,6 @@ const maplist=(array,status)=>{
          return  x.name === "checked"
         }
     })
-   return array.size===0?array=[]:array
 }
 
 export {fetchaddItems, fetchchnageContent, fetchshowItems, fetchchnageItems,postContent,maplist}
