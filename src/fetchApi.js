@@ -32,11 +32,11 @@ const fetchchnageItems = (id,dispatch) => {
     let newname="";
     axios.get(URL).then(res=>{
         array=[...res.data]
-        URL=URL+'/'+id;
+        let newUlr=URL+'/'+id;
         let newItem= array.find(item=>item.id===id)
         newItem.name===""?newname="checked":newname
         array.find(item=>item.id===id).name=newname
-            axios.put(URL,newItem)
+            axios.put(newUlr,newItem)
                 dispatch(checkItem(array))
 
         }
@@ -59,9 +59,9 @@ const postContent=(value,id,dispatch)=>{
         array=[...res.data]
       let item=  array.find(item => item.id === id);
         item.value=value;
-        URL=URL+'/'+id;
+     let   newUlr=URL+'/'+id;
         array.find(item => item.id === id).value=value;
-        axios.put(URL,item)
+        axios.put(newUlr,item)
         dispatch(editItem(array))
     })
 }

@@ -3,7 +3,8 @@ import './todo.css';
 import Header from './containers/headerContainer';
 import Items from './containers/ListItemContainer';
 import  Footer from'./containers/footerContainer';
-import footer from "./components/footer";
+import { Button } from 'antd';
+import { Input } from 'antd';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 class App extends Component {
     constructor(props) {

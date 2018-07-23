@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
-
+import { Checkbox } from 'antd';
 
 export default class ListItem extends Component {
 
@@ -35,7 +35,7 @@ export default class ListItem extends Component {
         return (
             <ol>
                 {todo.map(x => <li id={x.id} className={x.name} onDoubleClick={() => editItem(x.id)}>
-                    <input name="done-todo" type="checkbox" checked={x.name===""?false:true} className="done-todo" onClick={() => checkItem(x.id)}/>
+                    <Checkbox  name="done-todo" checked={x.name===""?false:true} className="done-todo" onClick={() => checkItem(x.id)}/>
                     <span contentEditable={x.contentEditable}> {x.value}</span></li>)}
             </ol>
         )

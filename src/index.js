@@ -5,7 +5,8 @@ import App from './App'
 import counter from './reducers/headerReducer'
 import thunk from 'redux-thunk';
 import {Provider} from "react-redux"
-import './todo.css';
+import './App.css';
+
 
 const store = createStore(counter,applyMiddleware(thunk))
 const rootEl = document.getElementById('root')

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-
+import { Button } from 'antd';
+import { Input } from 'antd';
 export default class header extends Component {
     constructor(props) {
         super(props);
@@ -20,8 +21,8 @@ export default class header extends Component {
         const {addItem} = this.props;
         return (
             <div>
-                <input id="input-text" className="input-text" type="text" name="ListItem" ref={this.inputText}/>
-                <div id="button" onClick={this.input}>Add</div>
+                <Input id="input-text" className="input-text" type="text" name="ListItem" ref={this.inputText} />
+                <Button onClick={this.input} type="primary">Add</Button>
             </div>);
     }
 
