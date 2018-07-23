@@ -4,8 +4,30 @@ import ListItem from "../components/ListItem";
 import {fetchchnageItems, fetchchnageContent,postContent,maplist} from '../fetchApi'
 
 const mapStateToProps = (state, props) => {
+
+    const filterStatus=(todolist,statusOfLine)=>{
+      return     todolist.filter(x=>{
+               if(statusOfLine==="/"){
+                   return true;
+               }
+               if(statusOfLine==="/active"){
+               return    x.name === ""
+               }
+               if (statusOfLine === "/complete") {
+                   return  x.name === "checked"
+               }
+
+               }
+
+           )
+    }
+
+    const statusOfLine=props.match.url;
+
+
     return {
-        todo: maplist(state.todoList,state.statusOfList)
+        // todo: maplist(state.todoList,state.statusOfList)
+        todo:filterStatus(state.todoList,statusOfLine)
     }
 
 }
