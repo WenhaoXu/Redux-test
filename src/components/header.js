@@ -10,10 +10,9 @@ export default class header extends Component {
 
 
     input = () => {
-        const inputvalue = this.inputText.current.value;
+        const inputvalue = this.inputText.current;
         const addItem = this.props.addItem;
-        addItem(inputvalue);
-        this.inputText.current.value=""
+        addItem(inputvalue.state.value);
     }
 
 
